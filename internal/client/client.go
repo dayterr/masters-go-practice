@@ -15,6 +15,7 @@ func (client Client) Run(ctx context.Context) {
 		for {
 			select {
 			case <-ticker.C:
+				fmt.Println("reading metrics")
 				client.ReadMetrics()
 			case <-ctx.Done():
 				return
