@@ -52,21 +52,21 @@ func (client Client) ReadMetrics() {
 		metricsArr := strings.Split(string(body), ",")
 		m := NewMetrics(metricsArr)
 
-		if m.CurServerLoadAverage > ServerLoadAverageThreshold {
+		if m.CurServerLoadAverage >= ServerLoadAverageThreshold {
 			fmt.Printf("Load Average is too high: %d\n", m.CurServerLoadAverage)
 		}
 
-		if m.CurRAMUsed > m.CurRAM*RAMConsumptionThreshold {
+		if m.CurRAMUsed >= m.CurRAM*RAMConsumptionThreshold {
 			perc := (m.CurRAMUsed / m.CurRAM) * 100
 			fmt.Printf("Memory usage too high: %.1f\n", perc)
 		}
 
-		if float64(m.CurDiskUsed) > float64(m.CurDiskSize)*DiskConsumptionThreshold {
+		if float64(m.CurDiskUsed) >= float64(m.CurDiskSize)*DiskConsumptionThreshold {
 			left := m.CurDiskSize - m.CurDiskUsed
 			fmt.Printf("Free disk space is too low: %d Mb left\n", left)
 		}
 
-		if float64(m.CurNetLoad) > float64(m.CurNetBandwidth)*NetBandwidthThreshold {
+		if float64(m.CurNetLoad) >= float64(m.CurNetBandwidth)*NetBandwidthThreshold {
 			left := m.CurNetBandwidth - m.CurNetLoad
 			fmt.Printf("Network bandwidth is too low: %d Mb left\n", left)
 		}
