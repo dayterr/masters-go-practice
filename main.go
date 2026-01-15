@@ -12,9 +12,9 @@ import (
 func main() {
 	metricsClient := client.NewClient()
 
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
-	defer cancel()
+	//ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+	//defer cancel()
 
-	metricsClient.Run(ctx)
+	metricsClient.Run()
 
 }
