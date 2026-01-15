@@ -1,15 +1,22 @@
 package main
 
 import (
+	"context"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
 	"github.com/dayterr/masters-go-practice/internal/client"
 )
 
 func main() {
 	metricsClient := client.NewClient()
 
-	//ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
-	//defer cancel()
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+	defer cancel()
 
-	metricsClient.Run()
+	metricsClient.Run(ctx)
+	time.Sleep(30 * time.Second)
 
 }
