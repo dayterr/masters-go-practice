@@ -10,13 +10,12 @@ import (
 )
 
 func (client Client) Run(ctx context.Context) {
-	fmt.Println("running function")
 	ticker := time.NewTicker(Interval * time.Second)
 	go func() {
 		for {
 			select {
 			case <-ticker.C:
-				fmt.Println("reading metrics")
+				fmt.Println("reading metrics ссс")
 				client.ReadMetrics()
 			case <-ctx.Done():
 				return
