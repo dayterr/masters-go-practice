@@ -10,6 +10,7 @@ import (
 )
 
 func (client Client) Run(ctx context.Context) {
+	fmt.Println("running function")
 	ticker := time.NewTicker(Interval * time.Second)
 	go func() {
 		for {
@@ -26,6 +27,7 @@ func (client Client) Run(ctx context.Context) {
 }
 
 func (client Client) ReadMetrics() {
+	fmt.Println("reading metrics")
 	c := &http.Client{}
 	req, err := http.NewRequest("GET", URL, nil)
 	if err != nil {
