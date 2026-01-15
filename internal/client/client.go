@@ -43,6 +43,7 @@ func (client Client) ReadMetrics() {
 		if client.Counter >= ErrorAmountThreshold {
 			fmt.Println("Unable to fetch server statistic")
 		}
+		fmt.Println("Content-Type real", resp.Header.Get("Content-Type"))
 	} else {
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
