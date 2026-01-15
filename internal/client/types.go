@@ -54,25 +54,25 @@ func NewMetrics(metricsArr []string) Metrics {
 	if err != nil {
 		m.CurDiskSize = 1
 	}
-	m.CurDiskSize = uint64(metr)
+	m.CurDiskSize = uint64(metrInt)
 
-	metr, err = strconv.ParseInt(metricsArr[4], 10, 64)
+	metrInt, err = strconv.ParseInt(metricsArr[4], 10, 64)
 	if err != nil {
 		m.CurDiskUsed = 1
 	}
-	m.CurDiskUsed = uint64(metr)
+	m.CurDiskUsed = uint64(metrInt)
 
-	metr, err = strconv.ParseInt(metricsArr[5], 10, 64)
+	metrInt, err = strconv.ParseInt(metricsArr[5], 10, 64)
 	if err != nil {
 		m.CurNetBandwidth = 1
 	}
-	m.CurNetBandwidth = uint64(metr)
+	m.CurNetBandwidth = uint64(metrInt)
 
-	metr, err = strconv.ParseInt(metricsArr[6], 10, 64)
+	metrInt, err = strconv.ParseInt(metricsArr[6], 10, 64)
 	if err != nil {
 		m.CurNetLoad = 1
 	}
-	m.CurNetLoad = uint64(metr)
+	m.CurNetLoad = uint64(metrInt)
 
 	return m
 }
