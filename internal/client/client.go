@@ -50,6 +50,7 @@ func (client Client) ReadMetrics() {
 		}
 		fmt.Println("Failed to get")
 		fmt.Println("code", resp.StatusCode)
+		fmt.Println("content-type", resp.Header.Get("Content-Type"))
 	} else {
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
