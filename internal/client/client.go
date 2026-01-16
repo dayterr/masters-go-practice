@@ -1,15 +1,13 @@
 package client
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"net/http"
 	"strings"
-	"time"
 )
 
-func (client Client) Run(ctx context.Context) {
+/*func (client Client) Run(ctx context.Context) {
 	ticker := time.NewTicker(Interval * time.Second)
 	go func() {
 		for {
@@ -21,6 +19,13 @@ func (client Client) Run(ctx context.Context) {
 			}
 		}
 	}()
+
+}*/
+
+func (client Client) Run() {
+	for {
+		client.ReadMetrics()
+	}
 
 }
 
