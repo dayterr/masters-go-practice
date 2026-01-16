@@ -30,6 +30,7 @@ func (client Client) Run() {
 }
 
 func (client Client) ReadMetrics() {
+	fmt.Println("running ReadMetrics()")
 	c := &http.Client{}
 	req, err := http.NewRequest("GET", URL, nil)
 	if err != nil {
@@ -48,6 +49,7 @@ func (client Client) ReadMetrics() {
 		if client.Counter >= ErrorAmountThreshold {
 			fmt.Println("Unable to fetch server statistic")
 		}
+		fmt.Println("Failed to get")
 	} else {
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
