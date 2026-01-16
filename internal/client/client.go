@@ -68,12 +68,13 @@ func (client Client) ReadMetrics() {
 
 		if float64(m.CurDiskUsed) >= float64(m.CurDiskSize)*DiskConsumptionThreshold {
 			left := m.CurDiskSize - m.CurDiskUsed
+			left /= BytesInMBytes
 			fmt.Printf("Free disk space is too low: %d Mb left\n", left)
 		}
 
 		if float64(m.CurNetLoad) >= float64(m.CurNetBandwidth)*NetBandwidthThreshold {
 			left := m.CurNetBandwidth/BitsInMBits - m.CurNetLoad/BitsInMBits
-			fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", uint64(left))
+			fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", left)
 		}
 
 	}

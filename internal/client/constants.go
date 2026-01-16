@@ -10,3 +10,4 @@ const Interval = 1
 const ContentTypeHeader = "text/plain; charset=utf-8"
 const ErrorAmountThreshold = 3
 const BitsInMBits = 1000000
+const BytesInMBytes = 1024 * 1024
