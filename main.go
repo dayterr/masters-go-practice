@@ -17,6 +17,6 @@ func main() {
 	defer cancel()
 
 	metricsClient.Run(ctx)
-	time.Sleep(40 * time.Second)
+	time.Sleep(10 * time.Second)
 
 }
