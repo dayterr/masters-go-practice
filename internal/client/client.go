@@ -63,7 +63,7 @@ func (client Client) ReadMetrics() {
 
 		if m.CurRAMUsed >= m.CurRAM*RAMConsumptionThreshold {
 			perc := (m.CurRAMUsed / m.CurRAM) * 100
-			fmt.Printf("Memory usage too high: %.1f\n", perc)
+			fmt.Printf("Memory usage too high: %d%\n", uint64(perc))
 		}
 
 		if float64(m.CurDiskUsed) >= float64(m.CurDiskSize)*DiskConsumptionThreshold {
@@ -73,7 +73,7 @@ func (client Client) ReadMetrics() {
 
 		if float64(m.CurNetLoad) >= float64(m.CurNetBandwidth)*NetBandwidthThreshold {
 			left := m.CurNetBandwidth - m.CurNetLoad
-			fmt.Printf("Network bandwidth is too low: %d Mb left\n", left)
+			fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", left)
 		}
 
 	}
