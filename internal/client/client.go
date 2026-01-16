@@ -73,7 +73,8 @@ func (client Client) ReadMetrics() {
 		}
 
 		if float64(m.CurNetLoad) >= float64(m.CurNetBandwidth)*NetBandwidthThreshold {
-			left := m.CurNetBandwidth/BitsInMBits - m.CurNetLoad/BitsInMBits
+			left := m.CurNetBandwidth - m.CurNetLoad
+			left /= BitsInMBits
 			fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", left)
 		}
 
